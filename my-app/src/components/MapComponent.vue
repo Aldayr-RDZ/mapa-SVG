@@ -1,37 +1,33 @@
-<template lang="">
-<div>
-<InlineSvg :src="require('../assets/Mexico_template.svg')"  type="image/svg+xml" onmouseover="displayName('Nuevo León')">
-</InlineSvg>
-
-<text class="label" id="country-name" x="10" y="390"> </text>
-
-
-</div>
-
-</template>
-<script >
+<script setup>
 import InlineSvg from 'vue-inline-svg';
-export default {
-    components:{
-        InlineSvg,
-    },
-     data() {
-    
-  },
-    methods: {
-       
-      displayName: function (name){
-          document.getElementById('').firstChild.data = name;
-        }
-    },
+import { defineProps } from 'vue'
+defineProps(['estados'])
+
+
+const colourCountries= (elem, data) => {
+  console.log(data)
+  const mapa= elem
+  for ( var country = 0 ; country< data.length; country++){
+    colourCountry(data[country], mapa)
+  }
+
+}
+
+const colourCountry =( data, mapa)=>{
+  var country = mapa.getElementById(data)
+  country.style.fill= '#DF583D';
 }
 
 
 
-
+ 
 </script>
-<style lang="">
 
-  
-</style>
+<template>
+  <main>
+    
+    <inline-svg :src="require('../assets/Mexico_templat.svg')"
+    @loaded="colourCountries($event, estados)" ></inline-svg>
 
+  </main>
+</template>

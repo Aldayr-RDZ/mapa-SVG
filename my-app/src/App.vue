@@ -1,17 +1,18 @@
 <template>
   
-  <MapComponent/>
+  <MapComponent :estados="estados"/>
 </template>
 
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+
+import { ref } from 'vue'
 import MapComponent from './components/MapComponent.vue'
-export default {
-  name: 'App',
-  components: {
-    MapComponent
-  }
-}
+
+
+const estados = ref([ 'MX-1','MX-19'])
+
+
+
 </script>
 
 <style>
